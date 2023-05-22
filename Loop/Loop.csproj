@@ -8,7 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Remove="Atividades\Req.http" />
+      <Compile Remove="Atividades\Entities\asd.cs" />
     </ItemGroup>
+
+    
 
 </Project>
