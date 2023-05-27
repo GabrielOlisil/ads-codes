@@ -1,4 +1,5 @@
-﻿using Loop.Atividades.Entities;
+﻿using System.Security.Cryptography.X509Certificates;
+using Loop.Atividades.Entities;
 
 namespace Loop.Atividades;
 
@@ -103,21 +104,25 @@ static class Atv
         Console.WriteLine("Digite o enésimo termo da fibonacci");
         var n = Convert.ToInt32(Console.ReadLine());
 
-        var fibonacci = new int[n];
 
-        fibonacci[0] = 1;
-        var currentValue = 0;
+        var a = 0;
+        var b = 1;
+        int c;
 
-        for (var i = 1; i < n; i++)
+        Console.WriteLine($"{a}\n{b}");
+
+        for (var i = 2; i < n; i++)
         {
-            fibonacci[i] = fibonacci[i - 1] + currentValue;
-            currentValue = fibonacci[i - 1];
-        }
+            c = a + b;
+            Console.WriteLine($"{c}");
+            a = b;
+            b = c;
 
-        foreach (var i in fibonacci)
-        {
-            Console.WriteLine(i);
+
         }
+        Console.ReadKey();
+
+
     }
 
     public static void Atividade6()
@@ -158,40 +163,57 @@ static class Atv
         var maiorValor = Convert.ToInt32(Console.ReadLine());
 
 
-        var qtdNumbers = maiorValor - menorValor;
+        var tamanhoSequencia = (maiorValor - menorValor) + 1;
+        double mediana;
 
-        var numbers = new int[qtdNumbers + 1];
-
-        for (var i = menorValor; i <= maiorValor; i++)
+        if (tamanhoSequencia % 2 == 0)
         {
-            numbers[i - menorValor] = i;
+
+            (int, int) indicesMediana = (tamanhoSequencia / 2 - 1, tamanhoSequencia / 2);
+            (int, int) valoresMediana = (0, 0);
+            for (var i = menorValor; i <= maiorValor; i++)
+            {
+                if (i == (indicesMediana.Item1 + menorValor))
+                {
+                    valoresMediana.Item1 = i;
+                }
+                if (i == (indicesMediana.Item2 + menorValor))
+                {
+                    valoresMediana.Item2 = i;
+                }
+
+            }
+            mediana = (double)valoresMediana.Item1 / valoresMediana.Item2;
+
+        }
+        else
+        {
+            var indiceMediana = tamanhoSequencia / 2;
+
+            for (var i = menorValor; i <= maiorValor; i++)
+            {
+                if (i == indiceMediana + menorValor)
+                {
+                    Console.WriteLine($"{i}");
+
+                }
+            }
+
         }
 
-        Console.Write($"A mediana da sequencia: ");
 
 
-        Console.WriteLine(string.Join(", ", numbers));
 
-        Console.Write("É: ");
+        Console.ReadKey();
 
-        if (numbers.Length % 2 == 0)
-        {
-            var values = (numbers[(numbers.Length / 2) - 1], numbers[numbers.Length / 2]);
 
-            var mediana = (double)(values.Item1 + values.Item2) / 2;
-            Console.WriteLine(mediana);
-            return;
-        }
-
-        var value = numbers[(numbers.Length / 2)];
-        Console.WriteLine(value);
     }
 
     public static void Atividade9()
     {
         var wantAddMore = false;
 
-        var employees = new List<Employee>();
+        List<Employee> employees = new();
         do
         {
             Console.WriteLine("Sexo do candidato");
@@ -221,7 +243,7 @@ static class Atv
             var option = Console.ReadLine();
 
             wantAddMore = !(string.IsNullOrEmpty(option) || option.ToLower() == "n");
-            
+
             Console.Clear();
         } while (wantAddMore);
 
@@ -301,7 +323,7 @@ static class Atv
         }
 
         Console.WriteLine("Candidatas Femininas: " + femaleEmployees);
-        
+
         Console.WriteLine("Candidatos Masculinos: " + maleEmployees);
 
         if (avgExpMale is not double.NaN)
@@ -326,5 +348,10 @@ static class Atv
         {
             Console.WriteLine(emp);
         }
+    }
+
+    public static void Atividade10()
+    {
+
     }
 }
