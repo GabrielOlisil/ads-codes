@@ -339,13 +339,19 @@ static class Atv
         bool wantAddMore = false;
         uint numberOfEmployee = 0;
 
+        double totalINSS = 0, totalIRRF = 0, totalEmployee = 0;
+
         do
         {
+            Console.Clear();
+
             numberOfEmployee++;
             Console.WriteLine($"Informe o valor do salário");
             var salarioBruto = Convert.ToDouble(Console.ReadLine());
 
             double salarioLiquido = salarioBruto;
+
+
 
             if (salarioBruto <= 1556.94)
             {
@@ -361,11 +367,63 @@ static class Atv
             }
 
 
-            if (salarioBruto is >= 1903.98 and <= 2826.65)
+            double totalDeduzidoINSS = salarioBruto - salarioLiquido;
+            totalINSS += totalDeduzidoINSS;
+
+            Console.WriteLine($"O INSS reteu {totalDeduzidoINSS.ToString("C2")}, do salário");
+
+            var descontoIRRF = 0.0;
+
+
+            if (salarioLiquido <= 1903.98)
             {
 
             }
+            else if (salarioLiquido <= 2626.65)
+            {
+                descontoIRRF = (salarioLiquido * 0.075 - 142.8);
+            }
+            else if (salarioLiquido <= 3751.05)
+            {
+                descontoIRRF = (salarioLiquido * 0.15 - 354.8);
+            }
+            else if (salarioLiquido <= 4664.68)
+            {
+                descontoIRRF = (salarioLiquido * 0.225 - 636.13);
+            }
+            else
+            {
+                descontoIRRF = (salarioLiquido * 0.275 - 869.36);
+            }
+
+
+            salarioLiquido -= descontoIRRF;
+            totalIRRF += descontoIRRF;
+
+
+
+
+
+
+            totalEmployee += salarioLiquido;
+
+            Console.WriteLine($"Para Imposto de Renda, foi retido: {descontoIRRF.ToString("C2")} na fonte, totalizando um salário líquido de {salarioLiquido.ToString("C2")}");
+
+            Console.WriteLine($"{Environment.NewLine}Deseja Adicionar Mais Um registro? [S/n]");
+            var opt = Console.ReadLine();
+
+            wantAddMore = opt?.ToString() == "s";
+
+
+
 
         } while (wantAddMore);
+
+        Console.WriteLine($"Total Pago à Receita Federal: {totalIRRF.ToString("C2")}");
+        Console.WriteLine($"Total Pago ao INSS: {totalINSS.ToString("C2")}");
+        Console.WriteLine($"Total Pago à Funcionários: {totalEmployee.ToString("C2")}");
+
+
+        Console.ReadKey();
     }
 }
