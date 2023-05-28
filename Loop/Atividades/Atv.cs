@@ -336,6 +336,36 @@ static class Atv
 
     public static void Atividade10()
     {
+        bool wantAddMore = false;
+        uint numberOfEmployee = 0;
 
+        do
+        {
+            numberOfEmployee++;
+            Console.WriteLine($"Informe o valor do salário");
+            var salarioBruto = Convert.ToDouble(Console.ReadLine());
+
+            double salarioLiquido = salarioBruto;
+
+            if (salarioBruto <= 1556.94)
+            {
+                salarioLiquido -= (salarioBruto * 0.08);
+            }
+            else if (salarioBruto <= 2594.92)
+            {
+                salarioLiquido -= (salarioBruto * 0.09);
+            }
+            else if (salarioBruto <= 5189.82)
+            {
+                salarioLiquido -= (salarioBruto * 0.11);
+            }
+
+
+            if (salarioBruto is >= 1903.98 and <= 2826.65)
+            {
+
+            }
+
+        } while (wantAddMore);
     }
 }
