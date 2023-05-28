@@ -1,12 +1,12 @@
-﻿using static Loop.Atividades.Atv;
-
+﻿using static Loop.Atividades.Atv5_5;
+using static Loop.Atividades.Atv5_6;
 
 while (true)
 {
     Console.Clear();
     Console.WriteLine("=================");
     Console.WriteLine("Hub de atividades");
-    Console.WriteLine("=================\n");
+    Console.WriteLine("=================");
     Console.WriteLine("Atividade 2 = 2");
     Console.WriteLine("Sair = 0");
     Console.Write("Selecione a opção: ");
@@ -16,6 +16,8 @@ while (true)
 
     switch (opt)
     {
+        // Atividades do capitulo 5.5
+
         case "2":
             Atividade2();
             break;
@@ -48,6 +50,26 @@ while (true)
             Atividade10();
             break;
 
+        // Atividades do capitulo 5.6
+
+        case "11":
+            Atividade11();
+            break;
+
+        case "12":
+            Atividade12();
+            break;
+
+        case "13":
+            Atividade13();
+            break;
+
+        case "14":
+            Atividade14();
+            break;
+        case "16":
+            Atividade16();
+            break;
 
         case "0":
             Environment.Exit(0);

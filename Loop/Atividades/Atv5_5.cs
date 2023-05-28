@@ -2,7 +2,7 @@
 
 namespace Loop.Atividades;
 
-static class Atv
+static class Atv5_5
 {
     public static void Atividade2()
     {
@@ -402,9 +402,6 @@ static class Atv
 
 
 
-
-
-
             totalEmployee += salarioLiquido;
 
             Console.WriteLine($"Para Imposto de Renda, foi retido: {descontoIRRF.ToString("C2")} na fonte, totalizando um salário líquido de {salarioLiquido.ToString("C2")}");
@@ -419,9 +416,11 @@ static class Atv
 
         } while (wantAddMore);
 
+        Console.WriteLine($"Folha de Pagamento: {Environment.NewLine}");
+
+        Console.WriteLine($"Total Pago à Funcionários: {totalEmployee.ToString("C2")}");
         Console.WriteLine($"Total Pago à Receita Federal: {totalIRRF.ToString("C2")}");
         Console.WriteLine($"Total Pago ao INSS: {totalINSS.ToString("C2")}");
-        Console.WriteLine($"Total Pago à Funcionários: {totalEmployee.ToString("C2")}");
 
 
         Console.ReadKey();

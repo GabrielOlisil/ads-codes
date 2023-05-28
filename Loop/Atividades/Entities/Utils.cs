@@ -15,3 +15,17 @@ public enum Scholarity
     PosGraduacao
 
 }
+
+public enum HairColor
+{
+    Louro = 1,
+    Castanho,
+    Preto
+}
+
+public enum EyeColor
+{
+    Azul = 1,
+    Verde,
+    Castanho
+}
