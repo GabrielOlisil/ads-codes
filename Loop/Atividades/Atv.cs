@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using Loop.Atividades.Entities;
+﻿using Loop.Atividades.Entities;
 
 namespace Loop.Atividades;
 
@@ -213,7 +212,12 @@ static class Atv
     {
         var wantAddMore = false;
 
-        List<Employee> employees = new();
+        uint maleApplicants = 0, maleWithExperience = 0, totalAgeMaleWithExperience = 0;
+        uint maleApplicantsBetween35And45 = 0;
+        uint femaleApplicants = 0, femaleWithExperience = 0, totalAgeFemaleWithExperience = 0;
+        byte minorFemaleAge = 0;
+        uint ensinoMedio = 0, ensinoFundamental = 0, ensinoSuperior = 0, posGraduacao = 0;
+
         do
         {
             Console.WriteLine("Sexo do candidato");
@@ -235,9 +239,67 @@ static class Atv
             Console.WriteLine("O candidato tem experiência? [S/n]");
             var res = Console.ReadLine();
 
-            var isExperient = res.ToLower() != "n";
+            var isExperient = res?.ToLower() != "n";
 
-            employees.Add(new Employee(sex, age, isExperient, scholarity));
+            switch (scholarity)
+            {
+                case Scholarity.EnsinoFundamental:
+                    ensinoFundamental++;
+                    break;
+                case Scholarity.EnsinoMedio:
+                    ensinoMedio++;
+                    break;
+                case Scholarity.EnsinoSuperior:
+                    ensinoSuperior++;
+                    break;
+                case Scholarity.PosGraduacao:
+                    posGraduacao++;
+                    break;
+
+            }
+
+
+            if (sex is Sex.Masc)
+            {
+                maleApplicants++;
+
+                if (isExperient)
+                {
+                    maleWithExperience++;
+                    totalAgeMaleWithExperience += age;
+                }
+
+                if (age is >= 35 and <= 45)
+                {
+                    maleApplicantsBetween35And45++;
+                }
+            }
+            else /* Se Feminino */
+            {
+                femaleApplicants++;
+
+                if (isExperient)
+                {
+                    femaleWithExperience++;
+                    totalAgeFemaleWithExperience += age;
+
+                    if (femaleWithExperience == 1)
+                    {
+                        minorFemaleAge = age;
+                    }
+                    else if (age < minorFemaleAge)
+                    {
+                        minorFemaleAge = age;
+                    }
+                }
+
+
+            }
+
+
+
+
+            Console.WriteLine($"O candidato nº {maleApplicants + femaleApplicants} tem a escolaridade de: {scholarity}");
 
             Console.Write("Deseja adicionar mais um funcionário?? [S/n] ");
             var option = Console.ReadLine();
@@ -247,107 +309,29 @@ static class Atv
             Console.Clear();
         } while (wantAddMore);
 
-
-        int femaleEmployees = 0;
-        int maleEmployees = 0;
-
-        var femaleWithExperience = new List<Employee>();
-
-        var maleWithExperience = new List<Employee>();
-
-        var manBetween35And45 = new List<Employee>();
+        var percentageManBetween35And45 = (double)maleApplicantsBetween35And45 / maleApplicants;
 
 
-        foreach (var employee in employees)
-        {
-            if (employee.Sex == Sex.Fem)
-            {
-                femaleEmployees++;
+        Console.WriteLine($"Total candidatos homens: {maleApplicants}");
 
-                if (employee.IsExperient)
-                {
-                    femaleWithExperience.Add(employee);
-                }
-            }
-            else
-            {
-                maleEmployees++;
-                if (employee.IsExperient)
-                {
-                    maleWithExperience.Add(employee);
-                }
+        Console.WriteLine($"Total candidatas mulheres: {femaleApplicants}");
 
-                if (employee.Age is >= 35 and <= 45)
-                {
-                    manBetween35And45.Add(employee);
-                }
-            }
-        }
+        Console.WriteLine($"Media de Idade Homens com experiencia: {((double)totalAgeMaleWithExperience / maleWithExperience).ToString("F2", CultureInfo.InvariantCulture)}");
 
-        Console.WriteLine($"Candidatas: {femaleEmployees}");
-        Console.WriteLine($"Candidatos: {maleEmployees}");
+        Console.WriteLine($"Media de Idade Mulheres com experiencia: {((double)totalAgeFemaleWithExperience / femaleWithExperience).ToString("F2", CultureInfo.InvariantCulture)}");
 
-        uint totalMaleAge = 0;
-        foreach (var emp in maleWithExperience)
-        {
-            totalMaleAge += emp.Age;
-        }
+        Console.WriteLine($"Percentagem dos homens com experiencia entre 35 e 45 anos: {percentageManBetween35And45.ToString("P2", CultureInfo.InvariantCulture)}");
 
-        var avgExpMale = (double)totalMaleAge / maleWithExperience.Count;
+        Console.WriteLine($"Menor idade entre as mulheres com experiencia: {minorFemaleAge}");
 
-        uint totalFemaleAge = 0;
-        foreach (var emp in femaleWithExperience)
-        {
-            totalFemaleAge += emp.Age;
-        }
-
-        var avgExpFemale = (double)totalFemaleAge / femaleWithExperience.Count;
+        Console.WriteLine($"Total de candidatos com escolaridade Ensino Fundamental: {ensinoFundamental}");
+        Console.WriteLine($"Total de candidatos com escolaridade Ensino Médio: {ensinoMedio}");
+        Console.WriteLine($"Total de candidatos com escolaridade Ensino Superior: {ensinoSuperior}");
+        Console.WriteLine($"Total de candidatos com escolaridade pós graduado: {posGraduacao}");
 
 
-        var percentOfManBetween35And45 = (double)manBetween35And45.Count / maleEmployees;
+        Console.ReadKey();
 
-        int minAgeFemaleWithExperience = 0;
-
-        foreach (var employee in femaleWithExperience)
-        {
-            if (minAgeFemaleWithExperience == 0)
-            {
-                minAgeFemaleWithExperience = employee.Age;
-                continue;
-            }
-
-            if (employee.Age < minAgeFemaleWithExperience)
-            {
-                minAgeFemaleWithExperience = employee.Age;
-            }
-        }
-
-        Console.WriteLine("Candidatas Femininas: " + femaleEmployees);
-
-        Console.WriteLine("Candidatos Masculinos: " + maleEmployees);
-
-        if (avgExpMale is not double.NaN)
-        {
-            Console.WriteLine("Média de idade dos homens com experiencia: " +
-                              avgExpMale.ToString("F2", CultureInfo.InvariantCulture));
-        }
-
-        if (avgExpFemale is not double.NaN)
-        {
-            Console.WriteLine("Média de idade das mulheres com experiencia: " +
-                              avgExpFemale.ToString("F2", CultureInfo.InvariantCulture));
-        }
-
-        Console.WriteLine("Percentagem dos homens entre 35 e 45 anos: " +
-                          percentOfManBetween35And45.ToString("P1", CultureInfo.InvariantCulture));
-        Console.WriteLine("Menor idade entre as mulheres experientes: " + minAgeFemaleWithExperience);
-
-
-        Console.WriteLine("Escolaridade: ");
-        foreach (var emp in employees)
-        {
-            Console.WriteLine(emp);
-        }
     }
 
     public static void Atividade10()
