@@ -6,8 +6,36 @@ while (true)
     Console.Clear();
     Console.WriteLine("=================");
     Console.WriteLine("Hub de atividades");
-    Console.WriteLine("=================");
+    Console.WriteLine($"================={Environment.NewLine}");
+
+    Console.WriteLine($"========================");
+    Console.WriteLine($"Atividades Capitulo 5.5");
+    Console.WriteLine($"========================{Environment.NewLine}");
+
     Console.WriteLine("Atividade 2 = 2");
+    Console.WriteLine("Atividade 3 = 3");
+    Console.WriteLine("Atividade 4 = 4");
+    Console.WriteLine("Atividade 5 = 5");
+    Console.WriteLine("Atividade 6 = 6");
+    Console.WriteLine("Atividade 7 = 7");
+    Console.WriteLine("Atividade 9 = 9");
+    Console.WriteLine("Atividade 10 = 10");
+
+    Console.WriteLine($"{Environment.NewLine}=======================");
+    Console.WriteLine($"atividades Capitulo 5.6");
+    Console.WriteLine($"======================={Environment.NewLine}");
+
+    Console.WriteLine("Atividade 1 = 11");
+    Console.WriteLine("Atividade 2 = 12");
+    Console.WriteLine("Atividade 3 = 13");
+    Console.WriteLine("Atividade 4 = 14");
+    Console.WriteLine("Atividade 6 = 16");
+    Console.WriteLine("Atividade 7 = 17");
+    Console.WriteLine("Atividade 8 = 18");
+    Console.WriteLine("Atividade 9 = 19");
+    Console.WriteLine($"Atividade 10 = 20{Environment.NewLine}");
+    Console.WriteLine($"================={Environment.NewLine}");
+
     Console.WriteLine("Sair = 0");
     Console.Write("Selecione a opção: ");
     var opt = Console.ReadLine();
@@ -76,6 +104,13 @@ while (true)
         case "18":
             Atividade18();
             break;
+        case "19":
+            Atividade19();
+            break;
+        case "20":
+            Atividade20();
+            break;
+
 
         case "0":
             Environment.Exit(0);

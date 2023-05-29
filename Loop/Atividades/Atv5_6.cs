@@ -228,7 +228,7 @@ static class Atv5_6
         var n2 = Convert.ToInt32(Console.ReadLine());
 
 
-        var mdc = (n1, n2);
+        (int, int) mdc = (n1, n2);
 
         if (mdc.Item1 < mdc.Item2)
         {
@@ -284,6 +284,104 @@ static class Atv5_6
 
     }
 
+    public static void Atividade19()
+    {
+        Console.WriteLine($"insira a distancia em Km");
+        var distancia = Convert.ToDouble(Console.ReadLine());
+
+        double positionA = 0.0, positionB = distancia;
+        const double R_MOVEMENT_A = 80;
+        const double R_MOVEMENT_B = 100;
+
+        var minutes = 0;
+
+        while (positionA <= positionB)
+        {
+            positionA += (R_MOVEMENT_A / 60);
+            positionB -= (R_MOVEMENT_B / 60);
+            minutes++;
+        }
+
+        Console.WriteLine($"Foram necessários {minutes} minutos");
+
+        Console.ReadKey();
+
+
+    }
+
+    public static void Atividade20()
+    {
+        double somaTotal = 0;
+        double mediaGeral = 0.0;
+        char conceitoGeral = 'E';
+
+        for (int i = 1; i < 3; i++)
+        {
+            Console.WriteLine($"Insira a nota do {i}º aluno");
+            var nota = Convert.ToDouble(Console.ReadLine());
+
+            somaTotal += nota;
+
+            mediaGeral = somaTotal / i;
+
+            char conceito = 'E';
+
+            if (nota is >= 0 and <= 2.9)
+            {
+                conceito = 'E';
+            }
+            else if (nota <= 4.9)
+            {
+                conceito = 'D';
+            }
+            else if (nota <= 6.9)
+            {
+                conceito = 'C';
+            }
+            else if (nota <= 8.9)
+            {
+                conceito = 'B';
+            }
+            else if (nota <= 10)
+            {
+                conceito = 'A';
+            }
+
+
+            Console.WriteLine($"O conceito do aluno {i} foi: {conceito}");
+
+
+        }
+
+        if (mediaGeral is >= 0 and <= 2.9)
+        {
+            conceitoGeral = 'E';
+        }
+        else if (mediaGeral <= 4.9)
+        {
+            conceitoGeral = 'D';
+        }
+        else if (mediaGeral <= 6.9)
+        {
+            conceitoGeral = 'C';
+        }
+        else if (mediaGeral <= 8.9)
+        {
+            conceitoGeral = 'B';
+        }
+        else if (mediaGeral <= 10)
+        {
+            conceitoGeral = 'A';
+        }
+
+
+
+        Console.WriteLine($"A média geral da sala ficou: {mediaGeral.ToString("F2", CultureInfo.InvariantCulture)}, a sala obteve conceito: {conceitoGeral}");
+
+        Console.ReadKey();
+
+
+    }
 
 
 }

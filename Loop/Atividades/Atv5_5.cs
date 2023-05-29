@@ -96,6 +96,8 @@ static class Atv5_5
         Console.WriteLine($"Numeros impares: {impares}");
         Console.WriteLine($"Numeros divisiveis por 3 e por 7: {divisiveisPor3E7}");
         Console.WriteLine($"média: {((double)soma / totalIteracoes).ToString("F2", CultureInfo.InvariantCulture)}");
+        Console.ReadKey();
+
     }
 
     public static void Atividade5()
@@ -108,7 +110,7 @@ static class Atv5_5
         var b = 1;
         int c;
 
-        Console.WriteLine($"{a}\n{b}");
+        Console.WriteLine($"{a}{Environment.NewLine}{b}");
 
         for (var i = 2; i < n; i++)
         {
@@ -120,8 +122,6 @@ static class Atv5_5
 
         }
         Console.ReadKey();
-
-
     }
 
     public static void Atividade6()
@@ -146,6 +146,8 @@ static class Atv5_5
          metade até chegar a 2, novamente dividido pela metade gerando 
          o resultado "1", que interrompe o loop
          */
+        Console.ReadKey();
+
     }
 
     public static void Atividade7()
