@@ -70,6 +70,12 @@ while (true)
         case "16":
             Atividade16();
             break;
+        case "17":
+            Atividade17();
+            break;
+        case "18":
+            Atividade18();
+            break;
 
         case "0":
             Environment.Exit(0);

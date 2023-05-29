@@ -140,7 +140,7 @@ static class Atv5_6
     {
         Console.WriteLine("Insira o Numero");
         var number = Convert.ToUInt32(Console.ReadLine());
-    
+
         var fatorial = 1.0;
 
         if (number == 0)
@@ -150,12 +150,12 @@ static class Atv5_6
 
             return;
         }
-        
+
         for (var i = number; i > 0; i--)
         {
             fatorial *= i;
         }
-        
+
         Console.WriteLine($"O fatorial de {number} é {fatorial}");
 
         Console.ReadKey();
@@ -165,7 +165,7 @@ static class Atv5_6
     {
         Console.WriteLine("Insira o Numero");
         var number = Convert.ToInt32(Console.ReadLine());
-        
+
         Console.WriteLine("Insira a Potencia");
         var pow = Convert.ToUInt32(Console.ReadLine());
 
@@ -177,7 +177,7 @@ static class Atv5_6
         }
 
         Console.WriteLine(number);
-        
+
         Console.ReadKey();
 
     }
@@ -212,12 +212,78 @@ static class Atv5_6
                 return;
             }
         }
-        
+
         Console.WriteLine("é primo");
 
         Console.ReadKey();
 
     }
+
+    public static void Atividade17()
+    {
+        Console.WriteLine($"Insira O primeiro número");
+        var n1 = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine($"Insira O segundo número");
+        var n2 = Convert.ToInt32(Console.ReadLine());
+
+
+        var mdc = (n1, n2);
+
+        if (mdc.Item1 < mdc.Item2)
+        {
+            mdc = (mdc.Item2, mdc.Item1);
+        }
+
+        while (mdc.Item1 > 0 && mdc.Item2 > 0)
+        {
+            mdc = (mdc.Item2, mdc.Item1 % mdc.Item2);
+        }
+
+
+        Console.WriteLine($"O mdc de ({n1}, {n2}) é {mdc.Item1}");
+        Console.ReadKey();
+
+
+    }
+
+
+    public static void Atividade18()
+    {
+        Console.WriteLine($"Insira o número inicial");
+        var inicio = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine($"Insira o número inicial");
+        var final = Convert.ToInt32(Console.ReadLine());
+
+
+
+        Console.WriteLine($"Os números perfeitos são:");
+
+        for (var i = inicio; i <= final; i++)
+        {
+            var sumDividers = 0.0;
+
+            for (var j = 1; j <= (i / 2); j++)
+            {
+                if (i % j == 0)
+                {
+                    sumDividers += j;
+
+                }
+            }
+
+
+            if (sumDividers == i)
+            {
+                Console.WriteLine($"{i}");
+            }
+        }
+
+        Console.ReadKey();
+
+    }
+
 
 
 }
