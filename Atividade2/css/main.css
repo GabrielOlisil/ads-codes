@@ -1,0 +1,62 @@
+* {
+    font-family: 'Helvetica Neue';
+    color: #444;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: #ddd;
+    width: 60%;
+    margin: 0 auto;
+    padding: 2% 0;
+}
+
+main {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+h1,
+h2 {
+    color: rgb(140, 76, 8);
+}
+
+section {
+    margin-top: 0px;
+    padding-bottom: 5px;
+    border-bottom: solid 1px gray;
+}
+
+section:last-child {
+    border: none;
+}
+
+
+.textarea {
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 100%;
+    resize: vertical;
+    min-height: 200px;
+    padding: .5rem;
+}
+
+
+.name {
+
+}
+
+#name:empty{
+    border: red solid 1px;
+    height: 1em;
+
+}
+
+#name:focus{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black
+
+}
