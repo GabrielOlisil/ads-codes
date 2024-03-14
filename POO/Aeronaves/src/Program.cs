@@ -1,6 +1,6 @@
 ﻿using Entities;
 
-var voo = new Voo(123, new DateTime(2004, 12, 3), 467);
+var voo = new Voo(123, DateTime.Now, 467);
 
 var numVagas = voo.Vagas();
 

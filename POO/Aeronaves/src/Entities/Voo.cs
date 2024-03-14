@@ -1,17 +1,18 @@
+using Lib.Enum;
 namespace Entities;
 
 class Voo
 {
-    private DateTime _data;
+    private DateTime _dataHora;
     private int _maximoPassageiros; //Boeing 747
     private int _numeroVoo;
 
     private Ocupacao[] _poltronasOculpadas;
 
-    public Voo(int numeroVoo, DateTime data, int maximoPassageiros)
+    public Voo(int numeroVoo, DateTime dataHora, int maximoPassageiros)
     {
         _numeroVoo = numeroVoo;
-        _data = data;
+        _dataHora = dataHora;
         _maximoPassageiros = maximoPassageiros;
 
         _poltronasOculpadas = new Ocupacao[_maximoPassageiros];
@@ -34,10 +35,7 @@ class Voo
 
 
 
-    public bool Verifica(int numPoltrona)
-    {
-        return _poltronasOculpadas[numPoltrona - 1] is Ocupacao.Desocupado;
-    }
+    public bool Verifica(int numPoltrona) => _poltronasOculpadas[numPoltrona - 1] is Ocupacao.Desocupado;
 
 
     public bool Ocupa(int numPoltrona)
