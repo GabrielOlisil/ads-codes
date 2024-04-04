@@ -1,17 +1,25 @@
+using static Validacao;
+
+
 public class ProprietarioFisico : Proprietario
 {
-    public int Id { get; set; }
     private string _cpf;
     public string Rg { get; set; }
     public DateTime DataNascimento { get; set; }
-    public Sexo sexo { get; set; }
+    public Sexo Sexo { get; set; }
     public Cnh Cnh { get; set; }
 
 
     public string GetCpf() => _cpf;
 
-    public void SetCpf()
+    public void SetCpf(string cpf)
     {
-        //Lógica de validar cpf
+        if (!ValidaCPF(cpf))
+        {
+            throw new Exception("CPF INVÀLIDO");
+        }
+
+        _cpf = cpf;
+
     }
 }
