@@ -19,17 +19,23 @@ public static class Validacao
         return (11 - resto).ToString();
     }
 
-    public static bool ValidaCPF(string cpf)
+    private static string ValidaFormatoCpf(string cpf)
     {
-        if (string.IsNullOrEmpty(cpf))
-        {
-            return false;
-        }
-
         cpf = cpf.Replace("-", "");
         cpf = cpf.Replace(".", "");
 
         if (cpf.Length != 11)
+        {
+            return string.Empty;
+        }
+        return cpf;
+    }
+
+
+    public static bool ValidaCPF(string cpf)
+    {
+        cpf = ValidaFormatoCpf(cpf);
+        if (string.IsNullOrEmpty(cpf))
         {
             return false;
         }
@@ -46,7 +52,6 @@ public static class Validacao
             return false;
         }
 
-
         numero = numero + digitosValidos.d1;
         var pesoValidacaoSegundo = new int[] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
 
@@ -56,7 +61,6 @@ public static class Validacao
         {
             return false;
         }
-
 
         return true;
     }

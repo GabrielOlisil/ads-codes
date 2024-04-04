@@ -1,5 +1,7 @@
-﻿Console.WriteLine();
+﻿using System.Globalization;
 
-Console.WriteLine(Validacao.ValidaCPF(""));
+Console.WriteLine();
 
-Console.WriteLine("Chama seu P");
+Console.WriteLine(Validacao.ValidaCPF("032.224.772.08"));
+
+Console.WriteLine(123.12.ToString("F2", CultureInfo.InvariantCulture));
