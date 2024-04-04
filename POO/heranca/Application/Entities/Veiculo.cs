@@ -1,3 +1,4 @@
+using static Validacao;
 public class Veiculo
 {
     public int Id { get; set; }
@@ -11,8 +12,12 @@ public class Veiculo
     public string GetNiv() => _niv;
 
 
-    public void SetNiv()
+    public void SetNiv(string niv)
     {
-        // lógica de validação
+        if (!ValidarNiv(niv))
+        {
+            throw new Exception("Niv inválido");
+        }
+        _niv = niv;
     }
 }

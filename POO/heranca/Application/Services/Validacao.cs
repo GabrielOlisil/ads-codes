@@ -65,10 +65,28 @@ public static class Validacao
         return true;
     }
 
-
+    // Validar niv
     public static bool ValidarNiv(string niv)
     {
+
+        niv = niv.Replace(".", "");
+
+        if (niv.Length != 17)
+        {
+            return false;
+        }
+
+        if (niv.Any(n => "OIQ".Contains(n.ToString().ToUpper()))) return false;
+
+
+        if (niv[^4..].Any(n => !char.IsNumber(n)))
+        {
+            return false;
+        }
+
         return true;
+
+
     }
 
 }
