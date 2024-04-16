@@ -70,7 +70,22 @@ if (idade <= 17) {
   document.writeln("ainda não pode tirar carteira de habilitação");
 }
 
+let temCNH = false;
+
+if (idade >= 18 && temCNH) {
+  document.writeln("Pode andar de moto");
+}
+else {
+  document.writeln("Não pode andar de moto");
+}
 
 
+if (idade < 18 || !temCNH) {
 
+  document.writeln("não pode andar de carro");
+
+} else {
+
+  document.writeln("pode andar de carro");
+}
 
