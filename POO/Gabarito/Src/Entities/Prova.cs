@@ -7,7 +7,6 @@ public class Prova
     private Gabarito _gabarito;
     private List<char> _respostas = new List<char>();
     private int _valorPorAlternativa;
-    private int _nota;
 
     public int ValorPorAlternativa { get => _valorPorAlternativa; }
 
