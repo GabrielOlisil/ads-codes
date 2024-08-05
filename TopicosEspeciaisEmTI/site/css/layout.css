@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    min-height: 200vh;
+}
+
+
+.layout-container {
+    display: flex;
+    justify-content: start;
+    align-items: stretch;
+    min-height: 200vh;
+    background-color: blue;
+    background-image: url("../images/background.jpg");
+    background-repeat: repeat;
+    background-size: 20rem;
+}
+
+.navbar-container {
+
+    padding: 0 .5rem;
+}
+
+
+.navbar-container nav ul {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+}
