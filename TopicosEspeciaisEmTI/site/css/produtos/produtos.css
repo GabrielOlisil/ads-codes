@@ -1,0 +1,54 @@
+.hero .brand {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+}
+
+.hero .brand h2 {
+    font-size: 10rem;
+}
+
+.products {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.card {
+    padding: 2rem 1rem;
+    /* 735645
+    
+    2b211d
+    
+    */
+    background-color: #2b211d;
+    max-width: 42rem;
+    color: #F2E4D8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 1rem;
+    box-shadow: #2b211d53 5px 5px 15px 4px;
+
+}
+
+.card:hover {
+    transform: scale(1.04);
+    cursor: pointer;
+}
+
+
+.card-img {
+    height: 24rem;
+    width: 40rem;
+}
+
+.card-img img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}

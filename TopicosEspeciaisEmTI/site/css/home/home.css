@@ -130,3 +130,8 @@ h2 {
     font-weight: bold;
     font-style: italic;
 }
+
+.quem-somos .content-text {
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+}
